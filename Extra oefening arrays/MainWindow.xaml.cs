@@ -48,7 +48,7 @@ namespace Extra_oefening_arrays
 
         private void LstMedewerkers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LblError.Content = "Geen Error";
+            LblError.Content = "Geen Errors";
             BtnUpdate.IsEnabled = true;
             TxtSalaris.IsEnabled = true;
 
@@ -60,7 +60,7 @@ namespace Extra_oefening_arrays
             //try
             //{
             //    decimal updateSalaris = Convert.ToDecimal(TxtSalaris.Text);
-            //    LblError.Content = "Geen errors";
+            //    LblError.Content = "Geen Errors";
             //}
             //catch (FormatException)
             //{
@@ -70,12 +70,12 @@ namespace Extra_oefening_arrays
             string updateSalaris = TxtSalaris.Text;
             int cijfer1;
             int cijfer2;
-            
 
+            // op twee manieren je fout op te vangen d.m.v. een try/catch of een TryParse
             if (int.TryParse(updateSalaris, out cijfer2))
             {
                 cijfer1 = cijfer2;
-                LblError.Content = "Geen errors";
+                LblError.Content = "Geen Errors";
             }
             else
             {
