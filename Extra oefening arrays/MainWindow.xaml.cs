@@ -26,37 +26,69 @@ namespace Extra_oefening_arrays
             Uitvoer();
         }
 
-        string[] medewerkers = new string[] { "Kristof", "Sander", "Koen"};
+        string[] medewerkers = new string[] { "Kristof", "Sander", "Koen" };
         string[] medewerkersNummers = new string[] { "M01", "M02", "M03" };
         decimal[] salarissen = new decimal[] { 0, 0, 0 };
-
+        int index = 0;
         private void Uitvoer()
         {
             //LstMedewerkers.ItemsSource = null;
             for (int i = 0; i < medewerkers.Length; i++)
             {
+
                 string lijstItemMedewerkers = $"{medewerkersNummers[i]} - {medewerkers[i]} - {salarissen[i]:c}";
                 LstMedewerkers.Items.Add(lijstItemMedewerkers);
+
+
+
             }
         }
 
+
+
         private void LstMedewerkers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            LblError.Content = "Geen Error";
             BtnUpdate.IsEnabled = true;
             TxtSalaris.IsEnabled = true;
+
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            // op twee manieren je fout op te vangen d.m.v. een try/catch of een TryParse
+            //try
+            //{
+            //    decimal updateSalaris = Convert.ToDecimal(TxtSalaris.Text);
+            //    LblError.Content = "Geen errors";
+            //}
+            //catch (FormatException)
+            //{
+            //    LblError.Content = "Kan tekst niet omzetten naar salaris";
+            //}
 
-            decimal updateSalaris = Convert.ToDecimal(TxtSalaris.Text);
+            string updateSalaris = TxtSalaris.Text;
+            int cijfer1;
+            int cijfer2;
 
+            if (int.TryParse(updateSalaris, out cijfer2))
+            {
+                cijfer1 = cijfer2;
+                LblError.Content = "Geen errors";
+            }
+            else
+            {
 
+                cijfer1 = 0;
+                LblError.Content = "Kan tekst niet omzetten naar salaris";
 
+            }
 
             BtnUpdate.IsEnabled = false;
             TxtSalaris.Clear();
             TxtSalaris.IsEnabled = false;
         }
+
     }
 }
+

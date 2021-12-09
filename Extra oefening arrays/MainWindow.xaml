@@ -14,7 +14,7 @@
                 <Button x:Name="BtnUpdate" IsEnabled="False" Content="Update" Width="100" Margin="10 5" Click="BtnUpdate_Click"/>
             </WrapPanel>
             <ListBox x:Name="LstMedewerkers" Height="150" SelectionChanged="LstMedewerkers_SelectionChanged" Width="200" Margin="70 10"/>
-            <Label Name="LblError" Content="Geen errors" Margin="40 0 0 0"/>
+            <Label Name="LblError" Content="Geen Errors" Margin="40 0 0 0"/>
         </StackPanel>
     </Grid>
 </Window>
