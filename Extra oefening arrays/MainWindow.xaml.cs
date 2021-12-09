@@ -70,6 +70,7 @@ namespace Extra_oefening_arrays
             string updateSalaris = TxtSalaris.Text;
             int cijfer1;
             int cijfer2;
+            
 
             if (int.TryParse(updateSalaris, out cijfer2))
             {
