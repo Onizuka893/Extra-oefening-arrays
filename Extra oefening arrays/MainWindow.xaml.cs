@@ -29,18 +29,16 @@ namespace Extra_oefening_arrays
         string[] medewerkers = new string[] { "Kristof", "Sander", "Koen" };
         string[] medewerkersNummers = new string[] { "M01", "M02", "M03" };
         decimal[] salarissen = new decimal[] { 0, 0, 0 };
-        int index = 0;
+        private int indexMedewerker;
+
+
         private void Uitvoer()
         {
             //LstMedewerkers.ItemsSource = null;
             for (int i = 0; i < medewerkers.Length; i++)
             {
-
                 string lijstItemMedewerkers = $"{medewerkersNummers[i]} - {medewerkers[i]} - {salarissen[i]:c}";
                 LstMedewerkers.Items.Add(lijstItemMedewerkers);
-
-
-
             }
         }
 
@@ -51,7 +49,7 @@ namespace Extra_oefening_arrays
             LblError.Content = "Geen Errors";
             BtnUpdate.IsEnabled = true;
             TxtSalaris.IsEnabled = true;
-
+            indexMedewerker = LstMedewerkers.SelectedIndex;
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
@@ -68,19 +66,17 @@ namespace Extra_oefening_arrays
             //}
 
             string updateSalaris = TxtSalaris.Text;
-            int cijfer1;
-            int cijfer2;
 
             // op twee manieren je fout op te vangen d.m.v. een try/catch of een TryParse
-            if (int.TryParse(updateSalaris, out cijfer2))
+            if (decimal.TryParse(updateSalaris, out decimal nieuwSalaris))
             {
-                cijfer1 = cijfer2;
+                salarissen[indexMedewerker] = nieuwSalaris;
+                LstMedewerkers.Items.Clear();
+                Uitvoer();
                 LblError.Content = "Geen Errors";
             }
             else
             {
-
-                cijfer1 = 0;
                 LblError.Content = "Kan tekst niet omzetten naar salaris";
 
             }
